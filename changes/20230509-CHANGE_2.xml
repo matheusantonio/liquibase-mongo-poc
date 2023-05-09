@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+    <changeSet id="2023050901" author="matheus.antonio">
+		<ext:runCommand>
+			<ext:command>
+				{ 
+					update : "Users",
+					updates: [
+						{
+							q : { Name : "John Doe" },
+							u : { Email : { $set : "john.doe@org.com.br" } }
+						},
+						{
+							q : { Name : "Foo Bar" },
+							u : { Email : { $set : "foo.bar@org.com.br" } }
+						}
+					]
+				}
+			</ext:command>
+		</ext:runCommand>
+		<rollback>
+			<ext:runCommand>
+				<ext:command>
+					{ 
+						update : "Users",
+						updates: [
+							{
+								q : { Name : "John Doe" },
+								u : { Email : { $set : "john.doe@liquibase.com.br" } }
+							},
+							{
+								q : { Name : "Foo Bar" },
+								u : { Email : { $set : "foo.bar@liquibase.com.br" } }
+							}
+						]
+					}
+				</ext:command>
+			</ext:runCommand>
+		</rollback>
+	</changeSet>
+
+	<changeSet id="2023050902" author="matheus.antonio">
+		<ext:runCommand>
+			<ext:command>
+				{ 
+					insert : "Users",
+					documents: [ 
+						{_id: BinData(4, "rBPVrvy2IEOkyZR0hqIzrg=="), Name: "Bruce Wayne", Email: "bruce.wayne@org.com.br"},
+						{_id: BinData(4, "vqrf61+rpkCkkgdrH4gbKg=="), Name: Tony Stark", Email: "tony.stark@org.com.br"}
+					]
+				}
+			</ext:command>
+			
+		</ext:runCommand>
+		<rollback>
+			<ext:runCommand>
+				<ext:command>
+					{ 
+						delete : "Users",
+						deletes: [ 
+							{ 
+								q : { _id: BinData(4, "rBPVrvy2IEOkyZR0hqIzrg==")},
+								limit : 1 
+							},
+							{ 
+								q : { _id: BinData(4, "vqrf61+rpkCkkgdrH4gbKg==")},
+								limit : 1 
+							}
+						]
+					}
+				</ext:command>
+			</ext:runCommand>
+		</rollback>
+	</changeSet>
+
+	
+</databaseChangeLog>

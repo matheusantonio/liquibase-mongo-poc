@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+    <changeSet id="2023050901" author="matheus.antonio">
+		<ext:runCommand>
+			<ext:command>
+				{ create : "Users" }
+			</ext:command>
+		</ext:runCommand>
+		<rollback>
+			<ext:runCommand>
+				<ext:command>
+					{ drop : "Users" }
+				</ext:command>
+			</ext:runCommand>
+		</rollback>
+	</changeSet>
+
+	<changeSet id="2023050902" author="matheus.antonio">
+		<ext:runCommand>
+			<ext:command>
+				{ 
+					insert : "Users",
+					documents: [ 
+						{_id: BinData(4, "kX3yVnftmEaZXVVOc+2m1g=="), Name: "John Doe", Email: "john.doe@liquibase.com.br"},
+						{_id: BinData(4, "Jlr8UbcfbU+HS3LgeTl+yg=="), Name: "Foo Bar", Email: "foo.bar@liquibase.com.br"}
+					]
+				}
+			</ext:command>
+			
+		</ext:runCommand>
+		<rollback>
+			<ext:runCommand>
+				<ext:command>
+					{ 
+						delete : "Users",
+						deletes: [ 
+							{ 
+								q : { _id: BinData(4, "kX3yVnftmEaZXVVOc+2m1g==")},
+								limit : 1 
+							},
+							{ 
+								q : { _id: BinData(4, "Jlr8UbcfbU+HS3LgeTl+yg==")},
+								limit : 1 
+							}
+						]
+					}
+				</ext:command>
+			</ext:runCommand>
+		</rollback>
+	</changeSet>
+
+	
+</databaseChangeLog>
