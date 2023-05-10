@@ -9,7 +9,7 @@
 		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
 		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
-    <include file="changes/20230509-CHANGE_1" />
-	<include file="changes/20230509-CHANGE_2" />
+    <include file="changes/20230509-CHANGE_1.xml" />
+	<include file="changes/20230509-CHANGE_2.xml" />
 	
 </databaseChangeLog>

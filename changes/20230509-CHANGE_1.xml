@@ -30,8 +30,8 @@
 				{ 
 					insert : "Users",
 					documents: [ 
-						{_id: BinData(4, "kX3yVnftmEaZXVVOc+2m1g=="), Name: "John Doe", Email: "john.doe@liquibase.com.br"},
-						{_id: BinData(4, "Jlr8UbcfbU+HS3LgeTl+yg=="), Name: "Foo Bar", Email: "foo.bar@liquibase.com.br"}
+						{ _id: BinData(4, "kX3yVnftmEaZXVVOc+2m1g=="), Name: "John Doe", Email: "john.doe@liquibase.com.br"},
+						{ _id: BinData(4, "Jlr8UbcfbU+HS3LgeTl+yg=="), Name: "Foo Bar", Email: "foo.bar@liquibase.com.br"}
 					]
 				}
 			</ext:command>

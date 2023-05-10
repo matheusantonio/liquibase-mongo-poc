@@ -17,11 +17,11 @@
 					updates: [
 						{
 							q : { Name : "John Doe" },
-							u : { Email : { $set : "john.doe@org.com.br" } }
+							u : { $set : { Email : "john.doe@org.com.br" } }
 						},
 						{
 							q : { Name : "Foo Bar" },
-							u : { Email : { $set : "foo.bar@org.com.br" } }
+							u : { $set : { Email : "foo.bar@org.com.br" } }
 						}
 					]
 				}
@@ -35,11 +35,11 @@
 						updates: [
 							{
 								q : { Name : "John Doe" },
-								u : { Email : { $set : "john.doe@liquibase.com.br" } }
+								u : { $set : { Email : "john.doe@liquibase.com.br" } }
 							},
 							{
 								q : { Name : "Foo Bar" },
-								u : { Email : { $set : "foo.bar@liquibase.com.br" } }
+								u : { $set : { Email : "foo.bar@liquibase.com.br" } }
 							}
 						]
 					}
@@ -55,7 +55,7 @@
 					insert : "Users",
 					documents: [ 
 						{_id: BinData(4, "rBPVrvy2IEOkyZR0hqIzrg=="), Name: "Bruce Wayne", Email: "bruce.wayne@org.com.br"},
-						{_id: BinData(4, "vqrf61+rpkCkkgdrH4gbKg=="), Name: Tony Stark", Email: "tony.stark@org.com.br"}
+						{_id: BinData(4, "vqrf61+rpkCkkgdrH4gbKg=="), Name: "Tony Stark", Email: "tony.stark@org.com.br"}
 					]
 				}
 			</ext:command>
